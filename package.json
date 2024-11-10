@@ -5,8 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index",
-    "vercel-build": "node index"
+    "dev": "nodemon index.js",
+    "vercel-build": "node index.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
