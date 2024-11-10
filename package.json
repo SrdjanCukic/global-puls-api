@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index",
-    "vercel-build": "nodemon index"
+    "vercel-build": "node index"
   },
   "keywords": [],
   "author": "",
