@@ -16,8 +16,7 @@ const GNEWS_API_URL = process.env.GNEWS_API_URL;
 const GNEWS_API_KEY = process.env.GNEWS_API_KEY;
 
 const SUPPORTED_ORIGINS = process.env.SUPPORTED_ORIGINS;
-// .split(", ");
-console.log({ SUPPORTED_ORIGINS });
+
 let cache = apicache.middleware;
 
 topHeadlines.get("/", cache("10 minutes"), async (req, res) => {

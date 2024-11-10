@@ -13,7 +13,6 @@ const NEWSAPI_KEY = process.env.NEWSAPI_KEY;
 const GNEWS_API_SEARCH_URL = process.env.GNEWS_API_SEARCH_URL;
 const GNEWS_API_KEY = process.env.GNEWS_API_KEY;
 const SUPPORTED_ORIGINS = process.env.SUPPORTED_ORIGINS;
-// .split(", ");
 
 keywordSearchRouter.get("/", async (req, res) => {
   const keyword = req.query.keyword;

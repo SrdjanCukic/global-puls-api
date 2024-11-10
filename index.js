@@ -5,7 +5,7 @@ import topHeadlines from "./routes/topHeadlines.js";
 import keywordSearchRouter from "./routes/keywordSearch.js";
 import { rateLimit } from "express-rate-limit";
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 const app = express();
 
