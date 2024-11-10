@@ -20,10 +20,10 @@ keywordSearchRouter.get("/", async (req, res) => {
     return res.status(400).json({ error: "Keyword is required" });
   }
 
-  if (!req.hostname || !SUPPORTED_ORIGINS.includes(req.hostname)) {
+  if (!req.headers.origin || !SUPPORTED_ORIGINS.includes(req.headers.origin)) {
     return res
       .status(400)
-      .json({ error: "Unsupported origin: " + req.hostname });
+      .json({ error: "Unsupported origin: " + req.headers.origin });
   }
 
   try {
