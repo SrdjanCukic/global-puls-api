@@ -21,6 +21,7 @@ keywordSearchRouter.get("/", async (req, res) => {
   }
 
   if (!req.hostname || !SUPPORTED_ORIGINS.includes(req.hostname)) {
+    console.log({ hostname });
     return res.status(400).json({ error: "Unsupported origin" });
   }
 
