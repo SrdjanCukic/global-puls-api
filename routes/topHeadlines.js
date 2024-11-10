@@ -21,8 +21,11 @@ let cache = apicache.middleware;
 
 topHeadlines.get("/", cache("10 minutes"), async (req, res) => {
   if (!req.hostname || !SUPPORTED_ORIGINS.includes(req.hostname)) {
-    return res.status(400).json({ error: "Unsupported origin" });
+    return res
+      .status(400)
+      .json({ error: "Unsupported origin: " + req.hostname });
   }
+
   try {
     const nytParams = new URLSearchParams({
       [NYT_API_NAME]: NYT_API_KEY,
