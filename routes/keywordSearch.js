@@ -20,11 +20,11 @@ keywordSearchRouter.get("/", async (req, res) => {
     return res.status(400).json({ error: "Keyword is required" });
   }
 
-  if (!req.headers.origin || !SUPPORTED_ORIGINS.includes(req.headers.origin)) {
-    return res
-      .status(400)
-      .json({ error: "Unsupported origin: " + req.headers.origin });
-  }
+  // if (!req.headers.origin || !SUPPORTED_ORIGINS.includes(req.headers.origin)) {
+  //   return res
+  //     .status(400)
+  //     .json({ error: "Unsupported origin: " + req.headers.origin });
+  // }
 
   try {
     const nytParams = new URLSearchParams({
