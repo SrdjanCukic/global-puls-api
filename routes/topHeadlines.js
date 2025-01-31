@@ -19,6 +19,18 @@ const SUPPORTED_ORIGINS = process.env.SUPPORTED_ORIGINS;
 
 let cache = apicache.middleware;
 
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+
+  // Check if the date is valid
+  if (isNaN(date)) {
+    return "Invalid Date";
+  }
+
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return date.toLocaleDateString("en-US", options);
+};
+
 // Normalize the article data to a uniform structure
 const normalizeArticleData = (apiResponse, source) => {
   const normalizedData = {
@@ -40,12 +52,13 @@ const normalizeArticleData = (apiResponse, source) => {
       apiResponse.link ||
       "There is no link",
     image: null,
-    date:
+    date: formatDate(
       apiResponse.published_date ||
-      apiResponse.publishedAt ||
-      apiResponse.pub_date ||
-      apiResponse.date ||
-      "Unknown Date",
+        apiResponse.publishedAt ||
+        apiResponse.pub_date ||
+        apiResponse.date ||
+        "Unknown Date"
+    ),
     source: apiResponse.source?.name || apiResponse.source || source || null,
   };
 
@@ -78,11 +91,11 @@ const processArticles = (articles) => {
 };
 
 topHeadlines.get("/", cache("10 minutes"), async (req, res) => {
-  if (!req.headers.origin || !SUPPORTED_ORIGINS.includes(req.headers.origin)) {
-    return res
-      .status(400)
-      .json({ error: "Unsupported origin: " + req.headers.origin });
-  }
+  // if (!req.headers.origin || !SUPPORTED_ORIGINS.includes(req.headers.origin)) {
+  //   return res
+  //     .status(400)
+  //     .json({ error: "Unsupported origin: " + req.headers.origin });
+  // }
 
   try {
     // Fetch NYT Data
