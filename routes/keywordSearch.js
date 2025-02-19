@@ -22,11 +22,11 @@ keywordSearchRouter.get("/", async (req, res) => {
     "Gnews",
   ];
 
-  // if (!req.headers.origin || !SUPPORTED_ORIGINS.includes(req.headers.origin)) {
-  //   return res
-  //     .status(400)
-  //     .json({ error: "Unsupported origin: " + req.headers.origin });
-  // }
+  if (!req.headers.origin || !SUPPORTED_ORIGINS.includes(req.headers.origin)) {
+    return res
+      .status(400)
+      .json({ error: "Unsupported origin: " + req.headers.origin });
+  }
 
   if (!keyword && !sources) {
     return res.status(400).json({ error: "Keyword and source is required" });
